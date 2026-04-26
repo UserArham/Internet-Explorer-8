@@ -6,186 +6,209 @@
 <title>Internet Explorer 8</title>
 <link rel="stylesheet" href="https://unpkg.com/xp.css">
 <style>
-body {
-  margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #808080;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-.browser {
-  width: 90%;
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  border: 2px solid #808080;
-  background-color: #c0c0c0;
-  box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
-}
-.title-bar {
-  display: flex;
-  align-items: center;
-  padding: 2px 6px;
-  background: linear-gradient(to bottom, #e0e0e0 0%, #c0c0c0 100%);
-  border-bottom: 1px solid #808080;
-  font-weight: bold;
-}
-.title-bar img { width: 16px; height: 16px; margin-right: 4px; }
-.menu-bar {
-  display: flex;
-  padding: 2px 6px;
-  background-color: #f0f0f0;
-  border-bottom: 1px solid #808080;
-}
-.menu-bar span { margin-right: 12px; cursor: default; font-size: 12px; }
-.toolbar {
-  display: flex;
-  align-items: center;
-  padding: 2px 4px;
-  background-color: #c0c0c0;
-  border-bottom: 2px solid #808080;
-}
-.toolbar button, .search-button { margin-right: 4px; }
-.search-button {
-  display: flex;
-  align-items: center;
-  border: 1px solid #808080;
-  background-color: #fff;
-  padding: 0 4px;
-  cursor: pointer;
-}
-.search-button img { width: 16px; height: 16px; margin-right: 2px; }
-.toolbar input.address-bar { flex: 1; padding: 2px; margin-right: 4px; }
-.tabs {
-  display: flex;
-  border-bottom: 2px solid #808080;
-  background-color: #e0e0e0;
-  overflow-x: auto;
-}
-.tab {
-  padding: 4px 8px;
-  margin-right: 2px;
-  border: 1px solid #808080;
-  border-bottom: none;
-  background-color: #d0d0d0;
-  cursor: pointer;
-  font-size: 12px;
-}
-.tab.active {
-  background-color: white;
-  font-weight: bold;
-}
-.content { flex: 1; border-top: none; overflow: hidden; }
-.content iframe { width: 100%; height: 100%; border: none; }
-body.inprivate .toolbar,
-body.inprivate .tabs,
-body.inprivate .content {
-  background-color: #222;
-  color: #fff;
-  border-color: #555;
-}
-body.inprivate .tab {
-  background-color: #333;
-  color: #fff;
-}
-body.inprivate .tab.active {
-  background-color: #000;
-  font-weight: bold;
-}
+/* Body & Browser */
+body { margin:0;font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;background:#808080;display:flex;justify-content:center;align-items:center;height:100vh; }
+.browser { width:90%; height:80vh; display:flex; flex-direction:column; border:2px solid #808080; background:#c0c0c0; box-shadow:3px 3px 8px rgba(0,0,0,0.3); }
+
+/* Title Bar */
+.title-bar { display:flex; align-items:center; justify-content:space-between; padding:2px 6px; background:linear-gradient(to bottom,#e0e0e0,#c0c0c0); border-bottom:1px solid #808080; font-weight:bold; }
+.title-bar-left { display:flex; align-items:center; }
+.title-bar-left img { width:16px;height:16px;margin-right:4px; }
+.title-bar-buttons button { width:24px; height:20px; margin-left:2px; background:#c0c0c0; border:1px solid #808080; font-weight:bold; cursor:pointer; }
+
+/* Menu Bar */
+.menu-bar { display:flex; padding:2px 6px; background:#f0f0f0; border-bottom:1px solid #808080; }
+.menu-bar span { margin-right:12px; cursor:default; font-size:12px; }
+
+/* Toolbar */
+.toolbar { display:flex; align-items:center; padding:2px 4px; background:#c0c0c0; border-bottom:2px solid #808080; }
+.toolbar button,.search-button { margin-right:4px; }
+.search-button { display:flex; align-items:center; border:1px solid #808080; background:#fff; padding:0 4px; cursor:pointer; }
+.search-button img { width:16px;height:16px;margin-right:2px; }
+.toolbar input.address-bar { flex:1; padding:2px; margin-right:4px; }
+
+/* Circular SVG navigation buttons */
+.nav-btn { padding:0; width:28px; height:28px; border:none; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+.nav-btn svg { transition:all 0.2s; }
+.nav-btn:hover svg circle { fill:#d0d0d0; }
+
+/* Tabs */
+.tabs { display:flex; border-bottom:2px solid #808080; background:#e0e0e0; overflow-x:auto; }
+.tab { display:flex; align-items:center; justify-content:space-between; padding:4px 8px; margin-right:2px; border:1px solid #808080; border-bottom:none; background:#d0d0d0; cursor:pointer; font-size:12px; transition:background 0.2s; }
+.tab:hover { background:#e8e8e8; }
+.tab.active { background:#fff; font-weight:bold; }
+.tab .close-btn { margin-left:4px; cursor:pointer; font-weight:bold; }
+.tab .close-btn:hover { color:red; }
+
+/* Content */
+.content { flex:1; border-top:none; overflow:hidden; }
+.content iframe { width:100%; height:100%; border:none; }
+
+/* InPrivate */
+body.inprivate .toolbar, body.inprivate .tabs, body.inprivate .content { background:#222; color:#fff; border-color:#555; }
+body.inprivate .tab { background:#333;color:#fff; }
+body.inprivate .tab.active { background:#000;font-weight:bold; }
+
+/* Scrollbar styling for tabs */
+.tabs::-webkit-scrollbar { height:8px; }
+.tabs::-webkit-scrollbar-thumb { background:#999; border-radius:4px; }
+.tabs::-webkit-scrollbar-track { background:#eee; border-radius:4px; }
 </style>
 </head>
 <body>
+
 <div class="browser">
+  <!-- Title bar -->
   <div class="title-bar">
-    <img src="https://www.techjunkie.com/wp-content/uploads/2011/03/ie-old.png" alt="IE Icon">
-    Windows Internet Explorer
+    <div class="title-bar-left">
+      <img src="https://www.techjunkie.com/wp-content/uploads/2011/03/ie-old.png" alt="IE Icon">
+      Windows Internet Explorer
+    </div>
+    <div class="title-bar-buttons">
+      <button>_</button>
+      <button>O</button>
+      <button>X</button>
+    </div>
   </div>
+
+  <!-- Menu bar -->
   <div class="menu-bar">
-    <span>File</span>
-    <span>Edit</span>
-    <span>View</span>
-    <span>Favorites</span>
-    <span>Tools</span>
-    <span>Help</span>
+    <span>File</span><span>Edit</span><span>View</span><span>Favorites</span><span>Tools</span><span>Help</span>
   </div>
+
+  <!-- Toolbar -->
   <div class="toolbar">
-    <button id="back-btn">&lt; Back</button>
-    <button id="forward-btn">Forward &gt;</button>
+    <!-- Back -->
+    <button id="back-btn" class="nav-btn" title="Back">
+      <svg width="20" height="20" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="11" stroke="#808080" stroke-width="2" fill="#e0e0e0"/>
+        <polygon points="14,6 8,12 14,18" fill="#333"/>
+      </svg>
+    </button>
+
+    <!-- Forward -->
+    <button id="forward-btn" class="nav-btn" title="Forward">
+      <svg width="20" height="20" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="11" stroke="#808080" stroke-width="2" fill="#e0e0e0"/>
+        <polygon points="10,6 16,12 10,18" fill="#333"/>
+      </svg>
+    </button>
+
     <button id="refresh-btn">Refresh</button>
     <button id="home-btn">Home</button>
     <button id="newtab-btn">New Tab</button>
-    <input type="text" id="address-bar" class="address-bar" value="https://www.google.com/webhp?igu=1&safe=active&ssui=on&zx=1777241043420">
+
+    <input type="text" id="address-bar" class="address-bar" value="https://www.google.com/webhp?igu=1&safe=active&ssui=on">
+
     <div class="search-button" id="search-btn">
       <img src="https://www.clipartmax.com/png/small/108-1087899_google-mobile-app-google-mobile-app-icon.png" alt="Google">
       Google
     </div>
+
     <button id="inprivate-btn">InPrivate</button>
   </div>
+
+  <!-- Tabs -->
   <div class="tabs" id="tabs">
-    <div class="tab active" data-url="https://www.google.com/webhp?igu=1&safe=active&ssui=on&zx=1777241043420">Google</div>
+    <div class="tab active" data-url="https://www.google.com/webhp?igu=1&safe=active&ssui=on">
+      Google <span class="close-btn">&times;</span>
+    </div>
   </div>
+
+  <!-- Content -->
   <div class="content" id="tab-content">
-    <iframe id="main-iframe" src="https://www.google.com/webhp?igu=1&safe=active&ssui=on&zx=1777241043420"></iframe>
+    <iframe id="main-iframe" src="https://www.google.com/webhp?igu=1&safe=active&ssui=on"></iframe>
   </div>
 </div>
-
+<!-- TAB AND NAVIGATION LOGIC COMMENTS -->
 <script>
-let tabHistory = [{back: [], forward: [], url: "https://www.google.com/webhp?igu=1&safe=active&ssui=on&zx=1777241043420", label: "Google"}];
+// -----------------------------
+// References and state
+// -----------------------------
+const iframe = document.getElementById('main-iframe'); // iframe for content
+const tabsContainer = document.getElementById('tabs'); // container for tabs
+const addressBar = document.getElementById('address-bar'); // address bar input
+
+// History array per tab
+let tabHistory = [
+  {back: [], forward: [], url: "https://www.google.com/webhp?igu=1&safe=active&ssui=on", label: "Google"}
+];
 let activeTabIndex = 0;
 
-const iframe = document.getElementById('main-iframe');
-const tabsContainer = document.getElementById('tabs');
-const addressBar = document.getElementById('address-bar');
+// -----------------------------
+// URL validation
+// -----------------------------
+function isValidURL(url) {
+  try { return Boolean(new URL(url)); } 
+  catch { return false; }
+}
 
+// -----------------------------
+// Update active tab UI and iframe
+// -----------------------------
 function updateTab() {
   const tab = tabsContainer.children[activeTabIndex];
   tab.dataset.url = tabHistory[activeTabIndex].url;
   tab.textContent = tabHistory[activeTabIndex].label;
+
+  // Add close button
+  const closeSpan = document.createElement('span');
+  closeSpan.classList.add('close-btn');
+  closeSpan.innerHTML = '&times;';
+  tab.appendChild(closeSpan);
+
   iframe.src = tabHistory[activeTabIndex].url;
   addressBar.value = tabHistory[activeTabIndex].url;
+
   Array.from(tabsContainer.children).forEach(t => t.classList.remove('active'));
   tab.classList.add('active');
 }
 
-// Tab click
+// -----------------------------
+// Tab click / close handling
+// -----------------------------
 tabsContainer.addEventListener('click', e => {
-  if(e.target.classList.contains('tab')) {
-    activeTabIndex = Array.from(tabsContainer.children).indexOf(e.target);
+  const clickedTab = e.target.closest('.tab');
+  if (!clickedTab) return;
+
+  const idx = Array.from(tabsContainer.children).indexOf(clickedTab);
+
+  // Close button
+  if (e.target.classList.contains('close-btn')) {
+    if (tabsContainer.children.length === 1) return; // prevent closing last tab
+    tabHistory.splice(idx, 1);
+    tabsContainer.removeChild(clickedTab);
+
+    if (activeTabIndex >= idx) activeTabIndex = Math.max(0, activeTabIndex - 1);
     updateTab();
+    return;
   }
+
+  // Switch tab
+  activeTabIndex = idx;
+  updateTab();
 });
 
+// -----------------------------
 // Address bar navigation
+// -----------------------------
 addressBar.addEventListener('keydown', e => {
-  if(e.key === 'Enter') {
+  if (e.key === 'Enter') {
     let url = addressBar.value.trim();
-    if(!url.startsWith('http')) url = 'https://' + url;
+    if (!url.startsWith('http')) url = 'https://' + url;
+    if (!isValidURL(url)) { alert("Invalid URL"); return; }
+
     tabHistory[activeTabIndex].back.push(tabHistory[activeTabIndex].url);
     tabHistory[activeTabIndex].forward = [];
     tabHistory[activeTabIndex].url = url;
-    tabHistory[activeTabIndex].label = "New Tab"; // if not Google
-    if(activeTabIndex === 0 && url.includes("google.com")) tabHistory[activeTabIndex].label = "Google";
+    tabHistory[activeTabIndex].label = (activeTabIndex === 0 && url.includes("google.com")) ? "Google" : "New Tab";
     updateTab();
   }
 });
-
-// Search button
-document.getElementById('search-btn').addEventListener('click', () => {
-  const query = addressBar.value.trim();
-  if(query) {
-    const searchURL = `https://www.google.com/search?q=${encodeURIComponent(query)}&igu=1&safe=active&ssui=on&zx=${Date.now()}`;
-    tabHistory[activeTabIndex].back.push(tabHistory[activeTabIndex].url);
-    tabHistory[activeTabIndex].forward = [];
-    tabHistory[activeTabIndex].url = searchURL;
-    tabHistory[activeTabIndex].label = "Google";
-    updateTab();
-  }
-});
-
-// New Tab button
-document.getElementById('newtab-btn').addEventListener('click', () => {
+// -----------------------------
+// New tab button
+// -----------------------------
+  document.getElementById('newtab-btn').addEventListener('click', () => {
   const newTab = document.createElement('div');
   newTab.classList.add('tab');
   const url = 'https://example.com';
@@ -193,47 +216,53 @@ document.getElementById('newtab-btn').addEventListener('click', () => {
   newTab.textContent = 'New Tab';
   tabsContainer.appendChild(newTab);
   tabHistory.push({back: [], forward: [], url: url, label: 'New Tab'});
+
   activeTabIndex = tabHistory.length - 1;
   updateTab();
 });
 
-// Back button
+// -----------------------------
+// Navigation buttons
+// -----------------------------
 document.getElementById('back-btn').addEventListener('click', () => {
-  const history = tabHistory[activeTabIndex];
-  if(history.back.length) {
-    history.forward.push(history.url);
-    history.url = history.back.pop();
-    updateTab();
-  }
+  const h = tabHistory[activeTabIndex];
+  if (h.back.length) { h.forward.push(h.url); h.url = h.back.pop(); updateTab(); }
 });
-
-// Forward button
 document.getElementById('forward-btn').addEventListener('click', () => {
-  const history = tabHistory[activeTabIndex];
-  if(history.forward.length) {
-    history.back.push(history.url);
-    history.url = history.forward.pop();
-    updateTab();
-  }
+  const h = tabHistory[activeTabIndex];
+  if (h.forward.length) { h.back.push(h.url); h.url = h.forward.pop(); updateTab(); }
 });
-
-// Refresh
 document.getElementById('refresh-btn').addEventListener('click', () => updateTab());
-
-// Home
 document.getElementById('home-btn').addEventListener('click', () => {
-  const homeURL = 'https://www.google.com/webhp?igu=1&safe=active&ssui=on&zx=1777241043420';
-  tabHistory[activeTabIndex].back.push(tabHistory[activeTabIndex].url);
-  tabHistory[activeTabIndex].forward = [];
-  tabHistory[activeTabIndex].url = homeURL;
-  tabHistory[activeTabIndex].label = "Google";
+  const h = tabHistory[activeTabIndex];
+  const home = 'https://www.google.com/webhp?igu=1&safe=active&ssui=on';
+  h.back.push(h.url); h.forward = []; h.url = home; h.label = 'Google';
   updateTab();
 });
+document.getElementById('inprivate-btn').addEventListener('click', () => document.body.classList.toggle('inprivate'));
 
-// InPrivate
-document.getElementById('inprivate-btn').addEventListener('click', () => {
-  document.body.classList.toggle('inprivate');
+// -----------------------------
+// Keyboard shortcuts
+// -----------------------------
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey && e.key === 't') { e.preventDefault(); document.getElementById('newtab-btn').click(); }
+  if (e.ctrlKey && e.key === 'w') { e.preventDefault(); const closeBtn = tabsContainer.children[activeTabIndex].querySelector('.close-btn'); if (closeBtn) closeBtn.click(); }
+  if (e.ctrlKey && e.key === 'Tab') { e.preventDefault(); activeTabIndex = (activeTabIndex + 1) % tabsContainer.children.length; updateTab(); }
 });
+
+// -----------------------------
+// Tab hover tooltip (title)
+// -----------------------------
+Array.from(tabsContainer.children).forEach(tab => {
+  tab.title = tab.dataset.url;
+});
+
+// -----------------------------
+// Stability enhancements
+// -----------------------------
+// Prevent double rapid navigation
+let navTimeout = false;
+iframe.addEventListener('load', () => { navTimeout = false; });
 </script>
 </body>
 </html>
