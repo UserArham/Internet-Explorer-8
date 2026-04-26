@@ -25,7 +25,7 @@ body { margin:0; font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif; backgr
 </div>
 
 <script>
-// --- Insert full 300-line JavaScript here ---
+// --- Insert full 280-line JavaScript here ---
 // Back/Forward SVG, Tabs, New Tab, InPrivate, Address bar, Google search
 </script>
 </body>
