@@ -82,8 +82,7 @@ All functionality runs **locally in your browser**, no server required.
 ---
 
 ## License
-??????
----
+<img alt="LICENSE" src="https://img.shields.io/badge/license-Mozilla%20Public%20License%20Version%202.0-blue?logo=mozilla">
 
 ## Screenshot 
 <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Internet_Explorer_8.png" alt="Internet Explorer 8 - Wikipedia"/>
