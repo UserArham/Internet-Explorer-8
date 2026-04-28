@@ -4,37 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Internet Explorer 8</title>
-<link rel="stylesheet" href="https://unpkg.com/xp.css">
 <style>
-/* Body & Browser */
+/* ===================== BODY & BROWSER ===================== */
 body {
-  margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #808080;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  margin:0;
+  font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+  background:#808080;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
 }
 .browser {
-  width: 90%;
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  border: 2px solid #808080;
-  background: #c0c0c0;
-  box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+  width:90%;
+  height:85vh;
+  display:flex;
+  flex-direction:column;
+  border:2px solid #808080;
+  background:#c0c0c0;
+  box-shadow:3px 3px 8px rgba(0,0,0,0.3);
 }
 
-/* Title Bar */
+/* ===================== TITLE BAR ===================== */
 .title-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2px 6px;
-  background: linear-gradient(to bottom,#e0e0e0,#c0c0c0);
-  border-bottom: 1px solid #808080;
-  font-weight: bold;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:2px 6px;
+  background: linear-gradient(to bottom,#e4e4e4,#c0c0c0);
+  border-bottom:1px solid #808080;
+  font-weight:bold;
+  user-select: none;
 }
 .title-bar-left {
   display: flex;
@@ -45,33 +45,41 @@ body {
   height:16px;
   margin-right:4px;
 }
-
-/* Windows XP-style title bar buttons */
-.title-bar-buttons {
-  display: flex;
+#protected-indicator {
+  display: none;
+  margin-left: 6px;
+  color: #f0a500;
+  font-weight: bold;
+  font-size: 12px;
 }
+
+/* ===================== WINDOW BUTTONS ===================== */
 .title-bar-buttons button {
-  width: 24px; height: 20px; margin-left: 2px;
-  font-weight: bold; font-size: 12px; text-align: center; cursor: pointer;
-
-  /* XP-style 3D borders */
-  border-top: 1px solid #fff;
-  border-left: 1px solid #fff;
-  border-bottom: 1px solid #404040;
-  border-right: 1px solid #404040;
-
-  background: linear-gradient(to bottom,#e0e0e0,#c0c0c0);
-  display: flex; align-items: center; justify-content: center;
+  width: 24px;
+  height: 20px;
+  margin-left: 2px;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #808080;
+  border-top-color: #fff;
+  border-left-color: #fff;
+  border-bottom-color: #404040;
+  border-right-color: #404040;
+  background: #c0c0c0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: inset 0 1px 0 #fff;
-  user-select: none;
 }
-.title-bar-buttons button:hover { background:#e0e0e0; }
+.title-bar-buttons button:hover { background: #e0e0e0; }
 .title-bar-buttons button:active {
-  border-top: 1px solid #404040;
-  border-left: 1px solid #404040;
-  border-bottom: 1px solid #fff;
-  border-right: 1px solid #fff;
-  background: #a0a0a0;
+  border-top-color:#404040;
+  border-left-color:#404040;
+  border-bottom-color:#fff;
+  border-right-color:#fff;
+  background:#a0a0a0;
 }
 .title-bar-buttons button.close:hover {
   background:#e81123;
@@ -80,9 +88,10 @@ body {
   border-left-color:#a50e1b;
   border-bottom-color:#600a10;
   border-right-color:#600a10;
+  box-shadow: inset 0 1px 0 #fff, inset 0 -1px 0 #600a10;
 }
 
-/* Menu Bar */
+/* ===================== MENU BAR ===================== */
 .menu-bar {
   display: flex;
   padding: 2px 6px;
@@ -95,126 +104,163 @@ body {
   font-size: 12px;
 }
 
-/* Toolbar */
+/* ===================== TOOLBAR ===================== */
 .toolbar {
   display: flex;
   align-items: center;
   padding: 2px 4px;
-  background: #c0c0c0;
+  background: #e6e6e6;
   border-bottom: 2px solid #808080;
 }
 .toolbar button {
   margin-right: 4px;
+  font-size: 12px;
+  cursor: pointer;
 }
 .toolbar input.address-bar {
   flex: 1;
   padding: 2px;
   margin-right: 4px;
+  font-size: 12px;
 }
 
-/* Google search box */
+/* ===================== SEARCH BOX ===================== */
 .search-box {
-  display:flex;
-  align-items:center;
-  border:1px solid #808080;
-  background:#fff;
-  padding:0 4px;
-  margin-right:4px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #808080;
+  background: #fff;
+  padding: 0 4px;
+  margin-right: 4px;
 }
 .search-box img {
-  width:16px;
-  height:16px;
-  margin-right:4px;
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
 }
 .search-box input {
-  border:none;
-  outline:none;
-  width:120px;
-  font-size:12px;
+  border: none;
+  outline: none;
+  width: 120px;
+  font-size: 12px;
 }
 .search-box button {
-  margin-left:4px;
-  font-size:12px;
-  cursor:pointer;
+  margin-left: 4px;
+  font-size: 12px;
+  cursor: pointer;
 }
 
-/* Circular SVG navigation buttons */
-.nav-btn {
-  padding:0; width:28px; height:28px; border:none;
-  background:transparent; cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-}
-.nav-btn svg { transition:all 0.2s; }
-.nav-btn:hover svg circle { fill:#d0d0d0; }
-
-/* Tabs */
-.tabs {
-  display:flex;
-  border-bottom:2px solid #808080;
+/* ===================== EXTENSIONS MENU ===================== */
+#extensions-menu {
+  display: none;
+  position: absolute;
   background:#e0e0e0;
-  overflow-x:auto;
+  border:1px solid #808080;
+  padding:4px;
+  font-size:12px;
+  z-index:100;
+}
+#extensions-menu .extension-item {
+  padding:2px 6px;
+  cursor: pointer;
+}
+#extensions-menu .extension-item:hover { background:#c0c0c0; }
+
+/* ===================== NAV BUTTONS ===================== */
+.nav-btn {
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-btn svg { transition: all 0.2s; }
+.nav-btn:hover svg circle { fill: #d0d0d0; }
+
+/* ===================== TABS ===================== */
+.tabs {
+  display: flex;
+  border-bottom: 2px solid #808080;
+  background: #e0e0e0;
+  overflow-x: auto;
 }
 .tab {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:4px 8px;
-  margin-right:2px;
-  border:1px solid #808080;
-  border-bottom:none;
-  background:#d0d0d0;
-  cursor:pointer;
-  font-size:12px;
-  transition:background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  margin-right: 2px;
+  border: 1px solid #808080;
+  border-bottom: none;
+  background: #d0d0d0;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.2s;
 }
-.tab:hover { background:#e8e8e8; }
-.tab.active { background:#fff; font-weight:bold; }
-.tab .close-btn { margin-left:4px; cursor:pointer; font-weight:bold; }
-.tab .close-btn:hover { color:red; }
+.tab:hover { background: #e8e8e8; }
+.tab.active { background: #fff; font-weight: bold; }
+.tab .close-btn { margin-left: 4px; cursor: pointer; font-weight: bold; }
+.tab .close-btn:hover { color: red; }
 
-/* Content */
+/* ===================== CONTENT ===================== */
 .content {
-  flex:1;
-  border-top:none;
-  overflow:hidden;
+  flex: 1;
+  border-top: none;
+  overflow: hidden;
 }
-.content iframe { width:100%; height:100%; border:none; }
+.content iframe { width: 100%; height: 100%; border: none; }
 
-/* Scrollbar styling for tabs */
-.tabs::-webkit-scrollbar { height:8px; }
-.tabs::-webkit-scrollbar-thumb { background:#999; border-radius:4px; }
-.tabs::-webkit-scrollbar-track { background:#eee; border-radius:4px; }
+/* ===================== INPRIVATE MODE ===================== */
+body.inprivate .browser {
+  filter: brightness(0.9) contrast(1.1);
+}
+
+/* ===================== SCROLLBARS ===================== */
+.tabs::-webkit-scrollbar { height: 8px; }
+.tabs::-webkit-scrollbar-thumb { background: #999; border-radius: 4px; }
+.tabs::-webkit-scrollbar-track { background: #eee; border-radius: 4px; }
 
 </style>
 </head>
 <body>
 
 <div class="browser">
-  <!-- Title bar -->
+  <!-- TITLE BAR -->
   <div class="title-bar">
     <div class="title-bar-left">
-      <img src="https://1000logos.net/wp-content/uploads/2020/08/Internet-Explorer-Logo-2005.png" alt="IE Icon">
+      <img src="https://1000logos.net/wp-content/uploads/2020/08/Internet-Explorer-Logo-2005.png" alt="IE8 Icon">
       Windows Internet Explorer
+      <span id="protected-indicator">🔒 Protected Mode</span>
     </div>
     <div class="title-bar-buttons">
       <button class="minimize" title="Minimize">_</button>
-      <button class="maximize" title="Maximize/Restore">□</button>
+      <button class="maximize" title="Maximize">□</button>
       <button class="close" title="Close">X</button>
     </div>
   </div>
 
-  <!-- Menu bar -->
+  <!-- MENU BAR -->
   <div class="menu-bar">
-    <span>File</span><span>Edit</span><span>View</span><span>Favorites</span><span>Tools</span><span>Help</span>
+    <span>File</span><span>Edit</span><span>View</span>
+    <span>Favorites</span><span>Tools</span><span>Help</span>
   </div>
 
-  <!-- Toolbar -->
+  <!-- TOOLBAR -->
   <div class="toolbar">
     <button id="back-btn" class="nav-btn" title="Back">
-      <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" stroke="#808080" stroke-width="2" fill="#e0e0e0"/><polygon points="14,6 8,12 14,18" fill="#333"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="11" stroke="#808080" stroke-width="2" fill="#e0e0e0"/>
+        <polygon points="14,6 8,12 14,18" fill="#333"/>
+      </svg>
     </button>
     <button id="forward-btn" class="nav-btn" title="Forward">
-      <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" stroke="#808080" stroke-width="2" fill="#e0e0e0"/><polygon points="10,6 16,12 10,18" fill="#333"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="11" stroke="#808080" stroke-width="2" fill="#e0e0e0"/>
+        <polygon points="10,6 16,12 10,18" fill="#333"/>
+      </svg>
     </button>
     <button id="refresh-btn">Refresh</button>
     <button id="home-btn">Home</button>
@@ -229,9 +275,15 @@ body {
     </div>
 
     <button id="inprivate-btn">InPrivate</button>
+    <button id="extensions-btn">Extensions ▼</button>
+    <div id="extensions-menu">
+      <div class="extension-item" data-extension="infinite-security">Infinite-Security</div>
+      <div class="extension-item" data-extension="ie6-mode">IE 6-Mode</div>
+      <div class="extension-item" data-extension="developer-tools">Developer-Tools</div>
+    </div>
   </div>
 
-  <!-- Tabs -->
+  <!-- TABS -->
   <div class="tabs" id="tabs">
     <div class="tab active" data-url="https://www.google.com/webhp?igu=1&safe=active&ssui=on">
       <span class="title">Google</span>
@@ -239,40 +291,38 @@ body {
     </div>
   </div>
 
-  <!-- Content -->
+  <!-- CONTENT -->
   <div class="content" id="tab-content">
     <iframe id="main-iframe" src="https://www.google.com/webhp?igu=1&safe=active&ssui=on"></iframe>
   </div>
 </div>
 
 <script>
-// References
+// ===================== REFERENCES =====================
 const iframe = document.getElementById('main-iframe');
 const tabsContainer = document.getElementById('tabs');
 const addressBar = document.getElementById('address-bar');
 const searchInput = document.getElementById('search-input');
+const inPrivateBtn = document.getElementById('inprivate-btn');
+const protectedIndicator = document.getElementById('protected-indicator');
+const extensionsBtn = document.getElementById('extensions-btn');
+const extensionsMenu = document.getElementById('extensions-menu');
 
 let tabHistory = [{back:[], forward:[], url:"https://www.google.com/webhp?igu=1&safe=active&ssui=on", label:"Google"}];
 let activeTabIndex = 0;
 
-// Update tab UI
+// ===================== TAB UPDATE =====================
 function updateTab(){
   const tab = tabsContainer.children[activeTabIndex];
   tab.dataset.url = tabHistory[activeTabIndex].url;
   tab.querySelector('.title').textContent = tabHistory[activeTabIndex].label;
   iframe.src = tabHistory[activeTabIndex].url;
   addressBar.value = tabHistory[activeTabIndex].url;
-  addressBar.title = tabHistory[activeTabIndex].url;
   Array.from(tabsContainer.children).forEach(t=>t.classList.remove('active'));
   tab.classList.add('active');
 }
 
-// Update tab label from iframe title
-iframe.addEventListener('load', ()=>{
-  try { const title = iframe.contentDocument.title; if(title) tabHistory[activeTabIndex].label = title; updateTab(); } catch {}
-});
-
-// Address bar enter
+// ===================== ADDRESS BAR =====================
 addressBar.addEventListener('keydown', e=>{
   if(e.key==='Enter'){
     let url = addressBar.value.trim();
@@ -285,7 +335,7 @@ addressBar.addEventListener('keydown', e=>{
   }
 });
 
-// Search bar
+// ===================== SEARCH BOX =====================
 document.getElementById('search-btn').addEventListener('click', () => {
   const q = searchInput.value.trim();
   if (!q) return;
@@ -299,7 +349,7 @@ searchInput.addEventListener('keydown', e => {
   if(e.key==='Enter') document.getElementById('search-btn').click();
 });
 
-// Tab click/close
+// ===================== TAB CLICK/CLOSE =====================
 tabsContainer.addEventListener('click', e=>{
   const tab = e.target.closest('.tab'); if(!tab) return;
   const idx = Array.from(tabsContainer.children).indexOf(tab);
@@ -312,7 +362,7 @@ tabsContainer.addEventListener('click', e=>{
   activeTabIndex=idx; updateTab();
 });
 
-// New Tab
+// ===================== NEW TAB =====================
 document.getElementById('newtab-btn').addEventListener('click', ()=>{
   const newTab = document.createElement('div'); newTab.classList.add('tab');
   newTab.innerHTML = '<span class="title">New Tab</span><span class="close-btn">&times;</span>';
@@ -321,13 +371,58 @@ document.getElementById('newtab-btn').addEventListener('click', ()=>{
   activeTabIndex = tabHistory.length-1; updateTab();
 });
 
-// Navigation buttons
+// ===================== NAVIGATION =====================
 document.getElementById('back-btn').addEventListener('click', ()=>{ const h=tabHistory[activeTabIndex]; if(h.back.length){h.forward.push(h.url); h.url=h.back.pop(); updateTab(); }});
 document.getElementById('forward-btn').addEventListener('click', ()=>{ const h=tabHistory[activeTabIndex]; if(h.forward.length){h.back.push(h.url); h.url=h.forward.pop(); updateTab(); }});
 document.getElementById('refresh-btn').addEventListener('click', ()=>updateTab());
 document.getElementById('home-btn').addEventListener('click', ()=>{ const h=tabHistory[activeTabIndex]; h.back.push(h.url); h.forward=[]; h.url="https://www.google.com/webhp?igu=1&safe=active&ssui=on"; updateTab(); });
-document.getElementById('inprivate-btn').addEventListener('click', ()=>document.body.classList.toggle('inprivate'));
 
+// ===================== INPRIVATE & PROTECTED MODE =====================
+inPrivateBtn.addEventListener('click', () => {
+  const inprivate = document.body.classList.toggle('inprivate');
+  protectedIndicator.style.display = inprivate ? 'inline-block' : 'none';
+});
+
+// ===================== EXTENSIONS MENU =====================
+extensionsBtn.addEventListener('click', () => {
+  extensionsMenu.style.display = extensionsMenu.style.display === 'none' ? 'block' : 'none';
+});
+document.addEventListener('click', (e) => {
+  if (!extensionsBtn.contains(e.target) && !extensionsMenu.contains(e.target)) extensionsMenu.style.display='none';
+});
+document.querySelectorAll('.extension-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const ext = item.dataset.extension;
+    switch(ext){
+      case 'infinite-security':
+        alert("Infinite-Security enabled: Protected Mode stability enhanced!");
+        document.body.classList.add('protected-enhanced');
+        break;
+      case 'ie6-mode':
+        alert("IE 6-Mode enabled! Tabs and InPrivate disabled.");
+        document.querySelector('.title-bar-left img').src = 
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnBOK8_lUF3oXhB7eLeuEIwzRUTFvJGQOCH-wA6GW8Klc3dDXhwk7SDBBaSaLmWC8wfD6cKw&s";
+        tabsContainer.style.pointerEvents = 'none';
+        document.getElementById('inprivate-btn').disabled = true;
+        break;
+      case 'developer-tools':
+        alert("Developer-Tools enabled! JS console button added.");
+        if(!document.getElementById('console-btn')){
+          const consoleBtn = document.createElement('button');
+          consoleBtn.id = 'console-btn';
+          consoleBtn.innerText = 'Console';
+          consoleBtn.style.marginLeft = '4px';
+          consoleBtn.addEventListener('click', () => {
+            console.log("Developer console opened (simulated).");
+            alert("JavaScript console (simulated) opened!");
+          });
+          document.querySelector('.toolbar').insertBefore(consoleBtn, document.getElementById('newtab-btn').nextSibling);
+        }
+        break;
+    }
+    extensionsMenu.style.display = 'none';
+  });
+});
 </script>
 </body>
 </html>
